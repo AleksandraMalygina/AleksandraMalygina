@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="AllOperationsSuite">
+    <test name="AllOperationsTest">
+        <packages>
+            <package name="hw1"></package>
+        </packages>
+        
+<!--        <classes>-->
+<!--            <class name="hw1.DivisionTest"/>-->
+<!--            <class name="hw1.MultiplicationTest"/>-->
+<!--            <class name="hw1.SubtractTest"/>-->
+<!--            <class name="hw1.SumTest"/>-->
+<!--        </classes>-->
+    </test>
+</suite>

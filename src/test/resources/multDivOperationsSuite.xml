@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+        <suite name="multDivOperationsSuite">
+            <test name="multDivOperationsTest">
+                <groups>
+                    <run>
+                        <include name="multDivGroup"/>
+                    </run>
+                </groups>
+
+                <packages>
+                    <package name="hw1"></package>
+                </packages>
+<!--                <classes>-->
+<!--                    <class name="hw1.MultiplicationTest"/>-->
+<!--                    <class name="hw1.DivisionTest"/>-->
+<!--                </classes>-->
+            </test>
+
+        </suite>
