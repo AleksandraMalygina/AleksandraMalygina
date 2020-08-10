@@ -11,10 +11,10 @@ public class DivisionTest {
 
     private Calculator calc;
 
-        @BeforeClass(alwaysRun = true)
-        public void before_class() {
-             calc = new Calculator();
-        }
+    @BeforeClass(alwaysRun = true)
+    public void before_class() {
+        calc = new Calculator();
+    }
 
     @Test(groups = {"multDivGroup"}, dataProvider = "DataForDivision",
             dataProviderClass = DataProviders.class)

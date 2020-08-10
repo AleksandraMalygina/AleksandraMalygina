@@ -10,10 +10,10 @@ public class SumTest {
 
     private Calculator calc;
 
-        @BeforeClass(alwaysRun = true)
-        public void beforeClass() {
-            calc = new Calculator();
-        }
+    @BeforeClass(alwaysRun = true)
+    public void beforeClass() {
+        calc = new Calculator();
+    }
 
     @Test(groups = {"plusMinusGroup"}, dataProvider = "DataForSum",
             dataProviderClass = DataProviders.class)

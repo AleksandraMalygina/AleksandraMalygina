@@ -10,10 +10,10 @@ public class SubtractTest {
 
     private Calculator calc;
 
-        @BeforeClass(alwaysRun = true)
-        public void beforeClass() {
-            calc = new Calculator();
-        }
+    @BeforeClass(alwaysRun = true)
+    public void beforeClass() {
+        calc = new Calculator();
+    }
 
     @Test(groups = {"plusMinusGroup"}, dataProvider = "DataForSubtraction",
             dataProviderClass = DataProviders.class)

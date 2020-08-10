@@ -5,12 +5,12 @@
         <packages>
             <package name="hw1"></package>
         </packages>
-        
-<!--        <classes>-->
-<!--            <class name="hw1.DivisionTest"/>-->
-<!--            <class name="hw1.MultiplicationTest"/>-->
-<!--            <class name="hw1.SubtractTest"/>-->
-<!--            <class name="hw1.SumTest"/>-->
-<!--        </classes>-->
+
+        <!--        <classes>-->
+        <!--            <class name="hw1.DivisionTest"/>-->
+        <!--            <class name="hw1.MultiplicationTest"/>-->
+        <!--            <class name="hw1.SubtractTest"/>-->
+        <!--            <class name="hw1.SumTest"/>-->
+        <!--        </classes>-->
     </test>
 </suite>
