@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="plusMinusOperationsSuite">
+    <test name="plusMinusOperationsTest">
+        <groups>
+            <run>
+                <include name="plusMinusGroup"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="hw1.SumTest"/>
+            <class name="hw1.SubtractTest"/>
+        </classes>
+    </test>
+</suite>
