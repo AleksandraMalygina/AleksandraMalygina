@@ -1,26 +1,24 @@
 package hw1;
 
 import com.epam.tat.module4.Calculator;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class SumTest {
 
-    private Calculator calc = new Calculator();
+    private Calculator calc;
 
-    //    @BeforeClass
-    //    public void beforeClass(){
-    //        calc = new Calculator();
-    //    }
+        @BeforeClass(alwaysRun = true)
+        public void beforeClass() {
+            calc = new Calculator();
+        }
 
     @Test(groups = {"plusMinusGroup"}, dataProvider = "DataForSum",
             dataProviderClass = DataProviders.class)
-    public void sumLongTest(Object[] l) {
-        Long a = (Long) l[0];
-        Long b = (Long) l[1];
-        Long expectedRes = (Long) l[2];
+    public void sumLongTest(long a, long b, long expectedRes) {
 
-        assertEquals(java.util.Optional.of(calc.sum(a, b)).get(), expectedRes);
+        assertEquals(calc.sum(a, b), expectedRes);
     }
 }
