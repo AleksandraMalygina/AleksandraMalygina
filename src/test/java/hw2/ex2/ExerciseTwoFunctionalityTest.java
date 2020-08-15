@@ -154,11 +154,12 @@ public class ExerciseTwoFunctionalityTest {
         WebElement waterCheckBox = checkBoxes
                 .stream()
                 .filter(a -> a.getText().trim().equalsIgnoreCase("water"))
-                .findFirst().get();
+                .findFirst().get().findElement(By.tagName("input"));
         WebElement windCheckBox = checkBoxes
                 .stream()
                 .filter(a -> a.getText().trim().equalsIgnoreCase("wind"))
-                .findFirst().get();
+                .findFirst().get().findElement(By.tagName("input"));
+
 
         action.moveToElement(waterCheckBox)
                 .click()
@@ -169,29 +170,28 @@ public class ExerciseTwoFunctionalityTest {
 
         //12. Assert that for each checkbox there is an individual log row
         // and value is corresponded to the status of checkbox.
+        softAssert.assertThat(waterCheckBox.isSelected()).isTrue();
+        softAssert.assertThat(windCheckBox.isSelected()).isTrue();
+        softAssert.assertAll();
+
         int logLength = 0;
         WebElement log = driver.findElement(By.cssSelector("ul.panel-body-list.logs"));
         String[] logLines = log.getText().split("\n");
-        List<String> boxNames = new ArrayList<>();
-        List<String> boxStates = new ArrayList<>();
         logLength = logLines.length;
 
         softAssert.assertThat(logLength).isEqualTo(2);
 
-        System.out.println(logLines);
-        for (int i = 0; i < logLength; i++) {
-            String[] arr = logLines[i].substring(9).split(":");
-            boxNames.add(arr[0].toLowerCase().trim());
-            boxStates.add(arr[1].toLowerCase().trim());
-        }
+        String logLine4checked = log.getText().split("\n")[0]
+                .substring(9)
+                .trim()
+                .toLowerCase();
+        softAssert.assertThat(logLine4checked).isEqualTo("wind: condition changed to true");
 
-        List<String> expectedBoxNames = Arrays.asList("wind", "water");
-        List<String> expectedBoxStates = Arrays.asList("condition changed to true",
-                "condition changed to true");
-
-
-        softAssert.assertThat(boxNames).containsExactlyInAnyOrderElementsOf(expectedBoxNames);
-        softAssert.assertThat(boxStates).containsExactlyInAnyOrderElementsOf(expectedBoxStates);
+        logLine4checked = log.getText().split("\n")[1]
+                .substring(9)
+                .trim()
+                .toLowerCase();
+        softAssert.assertThat(logLine4checked).isEqualTo("water: condition changed to true");
         softAssert.assertAll();
 
         //13. Select radio
