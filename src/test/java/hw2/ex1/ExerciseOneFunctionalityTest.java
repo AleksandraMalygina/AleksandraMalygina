@@ -37,11 +37,11 @@ public class ExerciseOneFunctionalityTest {
         WebElement toggle = profileMenu.findElement(By.className("dropdown-toggle"));
         toggle.click();
 
-        WebElement loginField = driver.findElement(By.xpath("//*[@id=\"name\"]"));
+        WebElement loginField = driver.findElement(By.id("name"));
         loginField.sendKeys("Roman");
-        WebElement passwordField = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+        WebElement passwordField = driver.findElement(By.id("password"));
         passwordField.sendKeys("Jdi1234");
-        WebElement enterButton = driver.findElement(By.xpath("//*[@id=\"login-button\"]"));
+        WebElement enterButton = driver.findElement(By.id("login-button"));
         enterButton.click();
 
         //4. Assert User name in the left-top side of screen that user is logged in

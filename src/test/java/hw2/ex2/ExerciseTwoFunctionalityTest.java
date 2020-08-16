@@ -11,7 +11,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,17 +43,17 @@ public class ExerciseTwoFunctionalityTest {
         WebElement toggle = profileMenu.findElement(By.className("dropdown-toggle"));
         toggle.click();
 
-        WebElement loginField = driver.findElement(By.xpath("//*[@id=\"name\"]"));
+        WebElement loginField = driver.findElement(By.id("name"));
         loginField.sendKeys("Roman");
-        WebElement passwordField = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+        WebElement passwordField = driver.findElement(By.id("password"));
         passwordField.sendKeys("Jdi1234");
-        WebElement enterButton = driver.findElement(By.xpath("//*[@id=\"login-button\"]"));
+        WebElement enterButton = driver.findElement(By.id("login-button"));
         enterButton.click();
+
 
         //4. Assert User name in the left-top side of screen that user is logged in
         WebElement userName = profileMenu.findElement(By.id("user-name"));
         Assert.assertEquals(userName.getText(), "ROMAN IOVLEV");
-
 
         //5. Click on "Service" subcategory in the header and check that drop down contains options
         WebElement headMenu = driver
