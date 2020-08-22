@@ -14,7 +14,9 @@
         <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>1.8</maven-compiler-plugin.target>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <assertj-core.version>3.16.1</assertj-core.version>
+       <assertj-core.version>3.16.1</assertj-core.version>
+        <allure.version>2.13.2</allure.version>
+        <aspectj.version>1.9.5</aspectj.version>
     </properties>
 
 
@@ -42,6 +44,18 @@
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.13.2</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -55,6 +69,7 @@
                     <target>${maven-compiler-plugin.target}</target>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -78,8 +93,28 @@
                     </execution>
                 </executions>
             </plugin>
+
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <version>${maven-surefire-plugin.version}</version>-->
+<!--                <configuration>-->
+<!--                    <argLine>-->
+<!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"-->
+<!--                    </argLine>-->
+<!--                </configuration>-->
+<!--                <dependencies>-->
+<!--                    <dependency>-->
+<!--                        <groupId>org.aspectj</groupId>-->
+<!--                        <artifactId>aspectjweaver</artifactId>-->
+<!--                        <version>${aspectj.version}</version>-->
+<!--                    </dependency>-->
+<!--                </dependencies>-->
+<!--            </plugin>-->
+
         </plugins>
     </build>
+
 
     <profiles>
         <profile>
@@ -212,8 +247,71 @@
                 </plugins>
             </build>
         </profile>
+
+        <profile>
+            <id>hw4profile</id>
+            <build>
+                <plugins>
+<!--                    <plugin>-->
+<!--                        <groupId>org.apache.maven.plugins</groupId>-->
+<!--                        <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                        <version>${maven-surefire-plugin.version}</version>-->
+<!--                        <configuration>-->
+<!--                            <suiteXmlFiles>-->
+<!--                                <suiteXmlFile>src/test/resources/hw4Suite.xml</suiteXmlFile>-->
+<!--                            </suiteXmlFiles>-->
+<!--                        </configuration>-->
+<!--                    </plugin>-->
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <argLine>
+                                -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                            </argLine>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>src/test/resources/hw4Suite.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.aspectj</groupId>
+                                <artifactId>aspectjweaver</artifactId>
+                                <version>${aspectj.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
     </profiles>
 
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+<!--            <plugin>-->
+<!--                <groupId>io.qameta.allure</groupId>-->
+<!--                <artifactId>allure-maven</artifactId>-->
+<!--                <version>2.10.0</version>-->
+<!--                <configuration>-->
+<!--                    <reportVersion>${allure.version}</reportVersion>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </reporting>
 
 
 </project>
