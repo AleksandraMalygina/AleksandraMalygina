@@ -2,7 +2,6 @@ package hw3.ex1;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -11,19 +10,20 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class ExerciseOneFunctionalityTest {
     private WebDriver driver;
     private Properties appProperties;
     private MainPage mainPage;
     private Ex1TestData testData;
+    private BaseTest baseTest;
 
     @BeforeClass
     public void initTestClass() {
         initDriver();
         initMainPage();
         initTestData();
+        initBaseTest();
     }
 
 
@@ -33,55 +33,52 @@ public class ExerciseOneFunctionalityTest {
         mainPage.openPage(testData.getUrl());
 
         // 2. Assert Browser title
-        Assert.assertEquals(mainPage.returnPageTitle(), testData.getPageTitle());
+        baseTest.assertString(mainPage.returnPageTitle(), testData.getPageTitle());
 
         //3. Perform login
         mainPage.enterCreds(testData.getLogin(), testData.getPassword());
 
         //4. Assert User name in the left-top side of screen that user is logged in
-        Assert.assertEquals(mainPage.returnUserName(), testData.getUserName());
+        baseTest.assertString(mainPage.returnUserName(), testData.getUserName());
 
         //5. Assert Browser title
-        Assert.assertEquals(mainPage.returnPageTitle(), testData.getPageTitle());
+        baseTest.assertString(mainPage.returnPageTitle(), testData.getPageTitle());
 
         //6. Assert that there are 4 items on the header section displayed
         // and they have proper texts
-        assertThat(mainPage.returnHeaderItemsText())
-                .containsExactlyInAnyOrderElementsOf(testData.getHeaderItemsNames());
+        baseTest.assertList(mainPage.returnHeaderItemsText(), testData.getHeaderItemsNames());
 
         //7.Assert that there are 4 images on the Index Page and they are displayed
-        Assert.assertEquals(mainPage.returnIconsNumber(), testData.getIconsNumber());
-        assertThat(mainPage.iconsAreDisplayed()).isTrue();
+        baseTest.assertInt(mainPage.returnIconsNumber(), testData.getIconsNumber());
+        baseTest.assertTrue(mainPage.iconsAreDisplayed());
 
         //8. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        Assert.assertEquals(mainPage.returnBenefitTextsNumber(), testData.getIconsNumber());
-        assertThat(mainPage.returnBenefitTexts())
-                .containsExactlyInAnyOrderElementsOf(testData.getBenefitTexts());
+        baseTest.assertInt(mainPage.returnBenefitTextsNumber(), testData.getIconsNumber());
+        baseTest.assertList(mainPage.returnBenefitTexts(), testData.getBenefitTexts());
 
         //9. Assert a text of the main headers
-        assertThat(mainPage.returnMainTitleText()).isEqualTo(testData.getMainTitle());
-        assertThat(mainPage.returnMainText()).isEqualTo(testData.getMainText());
+        baseTest.assertString(mainPage.returnMainTitleText(), testData.getMainTitle());
+        baseTest.assertString(mainPage.returnMainText(), testData.getMainText());
 
         //10. Assert that there is the iframe in the center of page
-        Assert.assertEquals(mainPage.returnFramesNumber(), testData.getFramesNumber());
+        baseTest.assertInt(mainPage.returnFramesNumber(), testData.getFramesNumber());
 
         //11. Switch to the iframe and check that
         // there is Epam logo in the left top conner of iframe
         //12. Switch to original window back
-        assertThat(mainPage.isLogoInFrameExists()).isTrue();
+        baseTest.assertTrue(mainPage.isLogoInFrameExists());
 
         //13. Assert a text of the sub header
-        assertThat(mainPage.returnSubHeaderText())
-                .isEqualTo(testData.getSubHeaderText());
+        baseTest.assertString(mainPage.returnSubHeaderText(), testData.getSubHeaderText());
 
         //14. Assert that JDI GITHUB is a link and has a proper URL
-        assertThat(mainPage.returnSubHeaderUrl()).isEqualTo(testData.getSubHeaderUrl());
+        baseTest.assertString(mainPage.returnSubHeaderUrl(), testData.getSubHeaderUrl());
 
         //15. Assert that there is Left Section
-        assertThat(mainPage.isLeftSectionDisplayed()).isTrue();
+        baseTest.assertTrue(mainPage.isLeftSectionDisplayed());
 
         //16. Assert that there is Footer
-        assertThat(mainPage.isFooterDisplayed()).isTrue();
+        baseTest.assertTrue(mainPage.isFooterDisplayed());
     }
 
     private void initDriver() {
@@ -106,6 +103,10 @@ public class ExerciseOneFunctionalityTest {
 
     private void initTestData() {
         testData = new Ex1TestData();
+    }
+
+    private void initBaseTest() {
+        baseTest = new BaseTest();
     }
 
     @AfterClass
