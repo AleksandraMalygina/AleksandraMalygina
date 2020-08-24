@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="hw3ex2Suite">
+    <test name="hw3ex2Test">
+        <packages>
+            <package name="hw3.ex2"></package>
+        </packages>
+    </test>
+</suite>
