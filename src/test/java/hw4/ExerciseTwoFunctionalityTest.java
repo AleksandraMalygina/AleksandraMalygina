@@ -1,32 +1,19 @@
 package hw4;
 
 import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
+public class ExerciseTwoFunctionalityTest extends WebPageTest {
 
-public class ExerciseTwoFunctionalityTest {
-    private WebDriver driver;
-    private Properties appProperties;
     private MainPageEx2 mainPage;
     private Ex2TestData testData;
     private SoftAssertions softAssert;
     private DifferentElementsPage difElPage;
-    private BaseTest baseTest;
 
     @BeforeClass
     public void setUp() {
         softAssert = new SoftAssertions();
-        initDriver();
-        initMainPage();
-        initTestData();
-        initBaseTest();
     }
 
     @Test
@@ -104,38 +91,15 @@ public class ExerciseTwoFunctionalityTest {
                 testData.getUncheckedBoxesLogs());
     }
 
-    private void initDriver() {
-        String propertyPath = "./src/main/resources/app.properties";
-        appProperties = new Properties();
-        try {
-            appProperties.load(new FileInputStream(propertyPath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        String driverPath = appProperties.getProperty("driverPath");
-        System.out.println(driverPath);
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
-
-    private void initMainPage() {
+    @Override
+    protected void initMainPage() {
         mainPage = new MainPageEx2(driver);
     }
 
-    private void initTestData() {
+    @Override
+    protected void initTestData() {
         testData = new Ex2TestData();
     }
 
-    private void initBaseTest() {
-        baseTest = new BaseTest();
-    }
-
-
-    @AfterClass
-    public void clearActions() {
-        //19. Close Browser
-        driver.quit();
-    }
 }

@@ -1,31 +1,10 @@
 package hw4;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
 
-
-public class ExerciseOneFunctionalityTest {
-    private WebDriver driver;
-    private Properties appProperties;
-    private MainPage mainPage;
+public class ExerciseOneFunctionalityTest extends WebPageTest {
     private Ex1TestData testData;
-    private BaseTest baseTest;
-
-    @BeforeClass
-    public void initTestClass() {
-        initDriver();
-        initMainPage();
-        initTestData();
-        initBaseTest();
-    }
-
 
     @Test
     public void mainPageTest() {
@@ -81,37 +60,13 @@ public class ExerciseOneFunctionalityTest {
         baseTest.assertTrue(mainPage.isFooterDisplayed());
     }
 
-    private void initDriver() {
-        String propertyPath = "./src/main/resources/app.properties";
-        appProperties = new Properties();
-        try {
-            appProperties.load(new FileInputStream(propertyPath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String driverPath = appProperties.getProperty("driverPath");
-        System.out.println(driverPath);
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
-
-    private void initMainPage() {
-        mainPage = new MainPage(driver);
-    }
-
-    private void initTestData() {
+    @Override
+    protected void initTestData() {
         testData = new Ex1TestData();
     }
 
-    private void initBaseTest() {
-        baseTest = new BaseTest();
-    }
-
-    @AfterClass
-    public void clearActions() {
-        //17. Close Browser
-        driver.quit();
+    @Override
+    protected void initMainPage() {
+        this.mainPage = new MainPage(driver);
     }
 }

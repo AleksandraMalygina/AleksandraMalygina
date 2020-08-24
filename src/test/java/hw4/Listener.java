@@ -4,7 +4,6 @@ import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
@@ -32,33 +31,5 @@ public class Listener implements ITestListener {
         attachScreenShot(itestResult);
     }
 
-    @Override
-    public void onTestStart(ITestResult itestResult) {
 
-    }
-
-    @Override
-    public void onTestSuccess(ITestResult itestResult) {
-
-    }
-
-    @Override
-    public void onTestSkipped(ITestResult itestResult) {
-
-    }
-
-    @Override
-    public void onTestFailedButWithinSuccessPercentage(ITestResult itestResult) {
-
-    }
-
-    @Override
-    public void onStart(ITestContext itestContext) {
-
-    }
-
-    @Override
-    public void onFinish(ITestContext itestContext) {
-
-    }
 }

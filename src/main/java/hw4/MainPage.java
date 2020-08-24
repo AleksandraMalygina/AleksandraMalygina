@@ -144,7 +144,7 @@ public class MainPage {
 
     @Step("Check Logo presence in the iframe header")
     public boolean isLogoInFrameExists() {
-        if (iframeList.size() != 0) {
+        if (!iframeList.isEmpty()) {
             iframe = iframeList.get(0);
         } else {
             driver.switchTo().defaultContent();
@@ -169,8 +169,7 @@ public class MainPage {
 
     @Step("Check that subHeader is a link with correct url")
     public String returnSubHeaderUrl() {
-        Optional<String> optVal = Optional.ofNullable(subHeader.getAttribute("href"));
-        String hrefValue = optVal.get();
+        String hrefValue = subHeader.getAttribute("href");
         return hrefValue;
     }
 
