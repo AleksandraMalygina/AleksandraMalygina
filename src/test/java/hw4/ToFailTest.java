@@ -2,33 +2,19 @@ package hw4;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
 
 
 @Listeners(Listener.class)
-public class ToFailTest {
-    private WebDriver driver;
-    private Properties appProperties;
-    private MainPage mainPage;
+public class ToFailTest extends WebPageTest {
     private Ex1TestData testData;
-    private BaseTest baseTest;
 
     @BeforeClass
     public void initTestClass(ITestContext testContext) {
-        initDriver();
-        initMainPage();
-        initTestData();
-        initBaseTest();
         testContext.setAttribute("driver", driver);
     }
 
@@ -69,36 +55,14 @@ public class ToFailTest {
 
     }
 
-    private void initDriver() {
-        String propertyPath = "./src/main/resources/app.properties";
-        appProperties = new Properties();
-        try {
-            appProperties.load(new FileInputStream(propertyPath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String driverPath = appProperties.getProperty("driverPath");
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
-
-    private void initMainPage() {
-        mainPage = new MainPage(driver);
-    }
-
-    private void initTestData() {
+    @Override
+    protected void initTestData() {
         testData = new Ex1TestData();
     }
 
-    private void initBaseTest() {
-        baseTest = new BaseTest();
+    @Override
+    protected void initMainPage() {
+        this.mainPage = new MainPage(driver);
     }
 
-    @AfterClass
-    public void clearActions() {
-        //17. Close Browser
-        driver.quit();
-    }
 }
