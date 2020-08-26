@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="hw5Suite">
+    <test name="hw5Test">
+        <classes>
+            <class name="hw5.RunEx1DifferentElementsPageTest"/>
+        </classes>
+    </test>
+</suite>
