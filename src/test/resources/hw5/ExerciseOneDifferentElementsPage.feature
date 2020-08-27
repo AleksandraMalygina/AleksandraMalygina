@@ -16,9 +16,11 @@ Feature: Different Elements Page Select elements feature
     And I select 'Selen' radiobutton on the Different Elements Page
     And I click on color dropdown menu on the Different Elements Page
     And I click on 'Yellow' button in color dropdown on the Different Elements Page
-    Then log rows should consist of the expected values
-
-
+    Then log rows should consist of the following values:
+      |water: condition changed to true |
+      |wind: condition changed to true  |
+      |metal: value changed to selen    |
+      |colors: value changed to yellow  |
 
 
 

@@ -4,16 +4,11 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
 
-public class HeaderMenu {
-
-    public HeaderMenu(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
+public class HeaderMenu extends BasePage {
 
     @FindBy(xpath = "//li[contains(@class, 'uui-profile-menu')]/a")
     private WebElement loginToggle;
@@ -37,6 +32,10 @@ public class HeaderMenu {
     private List<WebElement> serviceElements;
 
 
+    public HeaderMenu(WebDriver driver) {
+        super(driver);
+    }
+
     public void enterCreds(String login, String password) {
         loginToggle.click();
         enterLogin(login);
@@ -50,6 +49,12 @@ public class HeaderMenu {
 
     public void clickOnServiceHeaderButton() {
         serviceToggle.click();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void clickOnServiceElement(String elementName) {

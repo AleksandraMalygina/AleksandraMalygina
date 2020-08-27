@@ -20,7 +20,7 @@ public class ActionSteps {
                         .getLastLogLine());
     }
 
-    @And("I select {string} radiobutton on the Different Elements Page")
+    @When("I select {string} radiobutton on the Different Elements Page")
     public void iselectRadiobuttonOnTheDifferentElementsPage(String itemName) {
         new DifferentElementsPage(TestContext.getInstance().getDriver())
                 .selectRadio(itemName);
@@ -32,13 +32,13 @@ public class ActionSteps {
                         .getLastLogLine());
     }
 
-    @And("I click on color dropdown menu on the Different Elements Page")
+    @When("I click on color dropdown menu on the Different Elements Page")
     public void iclickOnColorDropdownMenuOnTheDifferentElementsPage() {
         new DifferentElementsPage(TestContext.getInstance().getDriver())
                 .clickOnDropdown();
     }
 
-    @And("I click on {string} button in color dropdown on the Different Elements Page")
+    @When("I click on {string} button in color dropdown on the Different Elements Page")
     public void iclickOnButtonInColorDropdownOnTheDifferentElementsPage(String colorName) {
         new DifferentElementsPage(TestContext.getInstance().getDriver())
                 .selectFromDropDrown(colorName);

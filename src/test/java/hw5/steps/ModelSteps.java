@@ -13,7 +13,7 @@ public class ModelSteps {
                .openPage(TestContext.getInstance().getTestData().getUrl());
     }
 
-    @And("I login as user \"Roman Iovlev\"")
+    @Given("I login as user \"Roman Iovlev\"")
     public void iloginAsUser() {
         new MainPage(TestContext.getInstance().getDriver())
                 .enterCreds(TestContext.getInstance().getTestData().getLogin(),
@@ -21,13 +21,13 @@ public class ModelSteps {
 
     }
 
-    @And("I click on \"Service\" button in Header")
+    @Given("I click on \"Service\" button in Header")
     public void iclickOnServiceButtonInHeader() {
         new MainPage(TestContext.getInstance().getDriver()).clickOnServiceHeaderButton();
 
     }
 
-    @And("I click on {string} button in Service dropdown")
+    @Given("I click on {string} button in Service dropdown")
     public void iclickOnDifferentElementsButtonInServiceDropdown(String elementName) {
         new MainPage(TestContext.getInstance().getDriver()).clickOnServiceElement(elementName);
     }

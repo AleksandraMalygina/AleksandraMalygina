@@ -10,21 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UserTablePage {
-
-    private WebDriver driver;
-
-    public UserTablePage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
-
+public class UserTablePage extends BasePage {
 
     @FindBy(xpath = ("//*[@id=\"user-table\"]/tbody/tr"))
     List<WebElement> tableRows;
 
     @FindBy(xpath = "//*[@id=\"user-table\"]")
     private WebElement userTable;
+
+
+    public UserTablePage(WebDriver driver) {
+        super(driver);
+    }
 
     public String getPageTitle() {
         return driver.getTitle();
@@ -107,7 +104,6 @@ public class UserTablePage {
                         .stream()
                         .map(a -> a.getText().trim())
                         .collect(Collectors.toList());
-                System.out.println(dropDownValues);
                 break;
             }
         }

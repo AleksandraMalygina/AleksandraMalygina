@@ -6,19 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class DifferentElementsPage {
+public class DifferentElementsPage extends BasePage {
     private RightSection rightSection;
-    private WebDriver driver;
-
-    public DifferentElementsPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-        rightSection = new RightSection(driver);
-    }
 
     @FindBy(xpath = "//label[@class='label-checkbox']/input[@type='checkbox']")
     private List<WebElement> checkBoxes;
@@ -45,37 +37,10 @@ public class DifferentElementsPage {
     private List<WebElement> inputButtons;
 
 
-    //    @Step("Check number of CheckBoxes")
-    //    public int getCheckBoxNumber() {
-    //        return checkBoxes.size();
-    //    }
-    //
-    //    @Step("Check number of RadioButtons")
-    //    public int getRadiosNumber() {
-    //        return radios.size();
-    //    }
-    //
-    //    @Step("Check number of Dropdown menus")
-    //    public int getDropdownNumber() {
-    //        return dropdowns.size();
-    //    }
-    //
-    //    @Step("Check number of Buttons")
-    //    public int getButtonsNumber() {
-    //        return (buttons.size() + inputButtons.size());
-    //    }
-    //
-    //    @Step("Check that Right Section is displayed")
-    //    public boolean isRightSectionExists() {
-    //        return rightSection.isRightSectionExists();
-    //    }
-
-    //    @Step("Select Checkboxes with names: {0}")
-    //    public void clickCheckBoxes(List<String> names) {
-    //        for (String name : names) {
-    //            clickCheckBox(name);
-    //        }
-    //    }
+    public DifferentElementsPage(WebDriver driver) {
+        super(driver);
+        rightSection = new RightSection(driver);
+    }
 
     public void clickCheckBox(String name) {
         checkBoxesLabels

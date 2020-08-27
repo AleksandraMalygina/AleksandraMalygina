@@ -1,8 +1,5 @@
 package hw5.data;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Ex1TestData {
 
     private String url = "https://jdi-testing.github.io/jdi-light/index.html";
@@ -10,11 +7,6 @@ public class Ex1TestData {
     private String login = "Roman";
     private String password = "Jdi1234";
     private String userName = "ROMAN IOVLEV";
-    private List<String> logLines = Arrays.asList(
-            "water: condition changed to true",
-            "wind: condition changed to true",
-            "metal: value changed to selen",
-            "colors: value changed to yellow");
 
     public String getUrl() {
         return url;
@@ -56,11 +48,4 @@ public class Ex1TestData {
         this.userName = userName;
     }
 
-    public List<String> getLogLines() {
-        return logLines;
-    }
-
-    public void setLogLines(List<String> logLines) {
-        this.logLines = logLines;
-    }
 }

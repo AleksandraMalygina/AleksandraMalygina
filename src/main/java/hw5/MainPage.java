@@ -4,16 +4,12 @@ package hw5;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
-public class MainPage {
-
-    private WebDriver driver;
+public class MainPage extends BasePage {
     private HeaderMenu headerMenu;
 
     public MainPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+        super(driver);
         headerMenu = new HeaderMenu(driver);
     }
 
