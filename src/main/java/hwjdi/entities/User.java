@@ -1,7 +1,7 @@
 package hwjdi.entities;
 
 public class User {
-
+    public static final User ROMAN = new User("Roman", "Jdi1234", "ROMAN IOVLEV");
     private String login;
     private String password;
     private String userName;

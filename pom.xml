@@ -148,47 +148,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                <version>${maven-surefire-plugin.version}</version>-->
-<!--                <configuration>-->
-<!--                    <argLine>-->
-<!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"-->
-<!--                    </argLine>-->
-<!--                </configuration>-->
-<!--                <dependencies>-->
-<!--                    <dependency>-->
-<!--                        <groupId>org.aspectj</groupId>-->
-<!--                        <artifactId>aspectjweaver</artifactId>-->
-<!--                        <version>${aspectj.version}</version>-->
-<!--                    </dependency>-->
-<!--                </dependencies>-->
-<!--            </plugin>-->
-
-<!--            <plugin>-->
-<!--                <groupId>org.jsonschema2pojo</groupId>-->
-<!--                <artifactId>jsonschema2pojo-maven-plugin</artifactId>-->
-<!--                <version>${jsonschema2pojo-maven-plugin.version}</version>-->
-<!--                <configuration>-->
-<!--                    <sourceDirectory>src/main/resources/jsons/MetalColorEntity.json</sourceDirectory>-->
-<!--                    <outputDirectory>src/main/java/hwjdi</outputDirectory>-->
-<!--                    <targetPackage>beans</targetPackage>-->
-<!--&lt;!&ndash;                    <annotationStyle>gson</annotationStyle>&ndash;&gt;-->
-<!--                    <sourceType>json</sourceType>-->
-<!--                    <excludes></excludes>-->
-<!--&lt;!&ndash;                    <generateBuilders>true</generateBuilders>&ndash;&gt;-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-
         </plugins>
     </build>
 

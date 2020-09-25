@@ -4,8 +4,8 @@ import hwjdi.beans.MetalColorEntity;
 import com.epam.jdi.light.elements.pageobjects.annotations.JSite;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
 import hwjdi.entities.User;
-import hwjdi.pagesandforms.HomePage;
-import hwjdi.pagesandforms.MetalsAndColorsPage;
+import hwjdi.pages.HomePage;
+import hwjdi.pages.MetalsAndColorsPage;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ public class Site {
 
     @Url("/index.html")
     public static HomePage homePage;
+
     @Url("/metals-colors.html")
     public static MetalsAndColorsPage metalColorPage;
-
 
     public static void open() {
         homePage.openSite();
@@ -35,26 +35,15 @@ public class Site {
         metalColorPage.checkOpened();
     }
 
-    public static void fillFormsOnMetalsAndColorsPage(MetalColorEntity  mcEntity) {
-        metalColorPage.fillForms(mcEntity);
-    }
-
-    public static void submitFormsOnMetalsAndColorsPage() {
-        metalColorPage.submitForms();
+    public static void submitFormOnMetalsAndColorsPageWith(MetalColorEntity  mcEntity) {
+        metalColorPage.submitFormWith(mcEntity);
     }
 
     public static void cleanFormsOnMetalsAndColorsPage() {
-
         metalColorPage.cleanForm();
     }
 
-    public static void assertSummaryLog() {
-
-    }
-
-
     public static List<String> getLogSummary() {
-
         return metalColorPage.getLogSummary();
     }
 }

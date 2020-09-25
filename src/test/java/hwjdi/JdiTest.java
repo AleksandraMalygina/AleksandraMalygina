@@ -8,7 +8,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import java.util.Map;
+import java.util.List;
 
 import static com.epam.jdi.light.elements.init.PageFactory.initElements;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,32 +27,27 @@ public class JdiTest {
 
 
     @Test
-    public void metalAndColorSubmitFormTest() {
-        User roman = new User(DataProviders.login, DataProviders.password, DataProviders.userName);
-
+    public void loginTest() {
         //  1. open main page
         Site.open();
         //  2. login as Roman Iovlev
-        Site.login(roman);
+        Site.login(User.ROMAN);
         //  3. Assert that userName is ROMAN
-        Assert.assertEquals(Site.getUserName(), DataProviders.userName);
+        Assert.assertEquals(Site.getUserName(), User.ROMAN.getUserName());
         //  4. Open metal&Color Page
         Site.goToMetalAndColorsPage();
-
-        Map<String, MetalColorEntity> data = new DataProviders().getData();
-
-        for (Map.Entry<String, MetalColorEntity> entry : data.entrySet()) {
-            //  5. Choose pre-defined elements(Fill form)
-            Site.fillFormsOnMetalsAndColorsPage(entry.getValue());
-            //  6. submit form
-            Site.submitFormsOnMetalsAndColorsPage();
-            //  7. Assert That result section contains pre-defined data
-            assertThat(Site.getLogSummary())
-                .containsExactlyInAnyOrderElementsOf(new DataProviders()
-                                                        .getExpectedDataAsText(entry.getValue()));
-
-            Site.cleanFormsOnMetalsAndColorsPage();
-        }
     }
 
+    @Test(dependsOnMethods = "loginTest",
+            dataProvider = "expectedDataProvider",
+            dataProviderClass = DataProviders.class)
+    public void metalAndColorSubmitFormTest(MetalColorEntity entity, List<String> expectedLog) {
+        //  5. Choose pre-defined elements(Fill form)
+        //  6. submit form
+        Site.submitFormOnMetalsAndColorsPageWith(entity);
+        //  7. Assert That result section contains pre-defined data
+        assertThat(Site.getLogSummary())
+            .containsExactlyInAnyOrderElementsOf(expectedLog);
+        Site.cleanFormsOnMetalsAndColorsPage();
+    }
 }
