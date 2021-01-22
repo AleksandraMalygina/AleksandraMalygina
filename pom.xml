@@ -293,8 +293,8 @@
                             </suiteXmlFiles>
                             <systemPropertyVariables>
                                 <test.url>https://jdi-testing.github.io/jdi-light/index.html</test.url>
-<!--                                <test.login>Roman</test.login>-->
-<!--                                <test.password>Jdi1234</test.password>-->
+                                <test.login></test.login>
+                                <test.password></test.password>
                             </systemPropertyVariables>
                         </configuration>
                         <dependencies>
