@@ -291,6 +291,11 @@
                             <suiteXmlFiles>
                                 <suiteXmlFile>src/test/resources/hw4Suite.xml</suiteXmlFile>
                             </suiteXmlFiles>
+                            <systemPropertyVariables>
+                                <test.url>https://jdi-testing.github.io/jdi-light/index.html</test.url>
+<!--                                <test.login>Roman</test.login>-->
+<!--                                <test.password>Jdi1234</test.password>-->
+                            </systemPropertyVariables>
                         </configuration>
                         <dependencies>
                             <dependency>

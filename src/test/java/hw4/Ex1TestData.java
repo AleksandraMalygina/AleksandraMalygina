@@ -5,10 +5,16 @@ import java.util.List;
 
 public class Ex1TestData {
 
-    private String url = "https://jdi-testing.github.io/jdi-light/index.html";
+    public Ex1TestData() {
+        url = System.getProperty("test.url");
+        login = System.getProperty("test.login");
+        password = System.getProperty("test.password");
+    }
+
+    private String url = System.getProperty("test.url");//"https://jdi-testing.github.io/jdi-light/index.html";
     private String pageTitle = "Home Page";
-    private String login = "Roman";
-    private String password = "Jdi1234";
+    private String login = System.getProperty("test.login"); //"Roman";
+    private String password = System.getProperty("test.password"); //"Jdi1234";
     private String userName = "ROMAN IOVLEV";
     private List<String> headerItemsNames = Arrays.asList("HOME",
             "CONTACT FORM",
