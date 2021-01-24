@@ -8,6 +8,7 @@ public class ExerciseOneFunctionalityTest extends WebPageTest {
 
     @Test
     public void mainPageTest() {
+        LOGGER.info("MSG: ExerciseOneFunctionalityTest start");
         // 1. Open test site by URL
         mainPage.openPage(testData.getUrl());
 

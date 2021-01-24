@@ -18,6 +18,7 @@ public class ExerciseTwoFunctionalityTest extends WebPageTest {
 
     @Test
     public void test() {
+        LOGGER.info("MSG: ExerciseTwoFunctionalityTest start");
         //1. Open test site by URL
         mainPage.openPage(testData.getUrl());
 

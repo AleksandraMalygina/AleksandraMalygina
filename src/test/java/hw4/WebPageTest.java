@@ -6,8 +6,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import java.util.logging.Logger;
+
 
 public abstract class WebPageTest {
+    public static final Logger LOGGER = Logger.getLogger(WebPageTest.class.getName());
     protected WebDriver driver;
     protected MainPage mainPage;
     protected BaseTest baseTest;
@@ -22,9 +25,11 @@ public abstract class WebPageTest {
 
 
     protected void initDriver() {
+        LOGGER.info("MSG: init driver start");
         WebDriverManager.chromedriver().setup();
         this.driver = new ChromeDriver();
         this.driver.manage().window().maximize();
+        LOGGER.info("MSG: init driver finish" + "driver is null = " + (this.driver==null));
     }
 
     protected abstract void initMainPage();
