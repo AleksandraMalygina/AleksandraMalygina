@@ -29,7 +29,7 @@ public abstract class WebPageTest {
         WebDriverManager.chromedriver().setup();
         this.driver = new ChromeDriver();
         this.driver.manage().window().maximize();
-        LOGGER.info("MSG: init driver finish" + "driver is null = " + (this.driver==null));
+        LOGGER.info("MSG: init driver finish" + "driver is null = " + (this.driver == null));
     }
 
     protected abstract void initMainPage();
