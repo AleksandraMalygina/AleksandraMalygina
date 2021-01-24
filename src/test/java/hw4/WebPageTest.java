@@ -22,7 +22,9 @@ public abstract class WebPageTest {
 
 
     protected void initDriver() {
-        WebDriverManager.chromedriver().setup();
+        //WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver",
+                "C:\\WebDrivers\\88.0.4324.96\\chromedriver.exe");
         this.driver = new ChromeDriver();
         this.driver.manage().window().maximize();
     }
