@@ -95,11 +95,13 @@ public class ExerciseTwoFunctionalityTest extends WebPageTest {
 
     @Override
     protected void initMainPage() {
+        LOGGER.info("MSG: initMainPage()  start");
         mainPage = new MainPageEx2(driver);
     }
 
     @Override
     protected void initTestData() {
+        LOGGER.info("MSG: initTestData()  start");
         testData = new Ex2TestData();
     }
 

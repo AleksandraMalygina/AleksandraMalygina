@@ -37,6 +37,8 @@ public abstract class WebPageTest {
     protected abstract void initTestData();
 
     protected void initBaseTest() {
+
+        LOGGER.info("MSG: initBasePage()  start");
         this.baseTest = new BaseTest();
     }
 

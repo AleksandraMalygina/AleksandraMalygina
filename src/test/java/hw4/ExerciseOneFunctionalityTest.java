@@ -63,11 +63,13 @@ public class ExerciseOneFunctionalityTest extends WebPageTest {
 
     @Override
     protected void initTestData() {
+        LOGGER.info("MSG: initTestData()  start");
         testData = new Ex1TestData();
     }
 
     @Override
     protected void initMainPage() {
+        LOGGER.info("MSG: initMainPage()  start");
         this.mainPage = new MainPage(driver);
     }
 }
