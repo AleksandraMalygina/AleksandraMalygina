@@ -26,7 +26,10 @@ public abstract class WebPageTest {
 
     protected void initDriver() {
         LOGGER.info("MSG: init driver start");
-        WebDriverManager.chromedriver().setup();
+        //WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver",
+                "C:\\WebDrivers\\88.0.4324.96\\chromedriver.exe");
+        //driver = new ChromeDriver();
         this.driver = new ChromeDriver();
         this.driver.manage().window().maximize();
         LOGGER.info("MSG: init driver finish" + "driver is null = " + (this.driver == null));
